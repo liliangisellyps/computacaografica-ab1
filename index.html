@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Projeto CG</title>
+    <meta name="description" content="Escola Virtual" />
+
+    <script src="../lib/aframe.min.js"></script>
+    <script src="../lib/aframe-extras.controls.min.js"></script>
+
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <script src="./components.js"></script>
+    <script src="./controller.js"></script>
+    <a-scene
+      renderer="antialias: true;"
+      id="#scene"
+      inspector-plugin-recast
+    >
+      <a-entity
+        environment="skyType: atmosphere; lighting: none; playArea: 1.67; preset: forest; groundTexture: none; groundColor: #283022; groundColor2: #283022; dressing: trees; dressingAmount: 500; ground: canyon; groundYScale: 40"
+      ></a-entity>
+
+      <a-assets>
+        <a-asset-item
+          id="school-gltf"
+          src="../assets/scene.gltf"
+          preload="auto"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="#school"
+        position="0.0 0.5 0.0"
+        gltf-model="#school-gltf"
+        scale="1.0 1.0 1.0"
+      >
+      </a-entity>
+
+      <a-entity
+        movement-controls="speed: 0.15; camera: #camera;"
+        position="0 8 0"
+        rotation="0 180 0"
+        id="#player"
+      >
+        <a-entity
+          camera="near:0.01;"
+          look-controls
+          fov="100"
+          id="#camera"
+          position="0 1 0"
+        >
+          <a-entity
+            id="#hud"
+            position="0 0.04 -1.0"
+            scale="0.1 0.1 0.1"
+            rotation="0 0 0"
+            animation-mixer
+          >
+            <a-entity id="paineis">
+              <a-entity id="painelBoasVindas" visible="false">
+                <a-image
+                  src="../assets/paper.png"
+                  scale="5 4 1"
+                >
+                </a-image>
+                <a-entity
+                  id="paineltext"
+                  geometry="primitive: plane; height: 3.1; width: auto;"
+                  material="color: white;"
+                  position="0.351 0 0"
+                  text="width: 4; color: black; negate: false; font: ../fonts/Exo2-Regular-msdf.json;
+                  font-image: ../fonts/Exo2-Regular.png; value:
+                  Bem-vindo(a)!
+                  
+                  Explore o emocionante mundo da lógica de programação no metaverso da aprendizagem! 
+                                    
+                  Nesta aventura, você é protagonista da sua jornada, realizando atividades do seu cotidiano!
+                          
+                  Aperte o botão SQUEEZE para o próximo painel ->
+                  "
+                ></a-entity>
+              </a-entity>
+
+              <a-entity id="painelPrimeiraMissao" visible="false">
+                <a-image
+                  src="../assets/paper.png"
+                  scale="5 4 1"
+                >
+                </a-image>
+                <a-entity
+                  id="paineltext"
+                  geometry="primitive: plane; height: 2.58; width: auto;"
+                  material="color: white;"
+                  position="0.351 0.078 0"
+                  text="width: 4; color: black; negate: false; font: ../fonts/Exo2-Regular-msdf.json;
+                  font-image: ../fonts/Exo2-Regular.png;  value:
+                  Nível 1 -
+
+                  Objetivo:
+                  A jornada tem início na sala de aula da sua escola, onde a sua história toma forma. A primeira missão que se apresenta é simples, porém crucial: alcançar a sala a tempo para a aula.
+
+                  Instruções:
+                  Utilize o controle direcional para manipular os blocos que estão dispostos no quadro da sala. Organize-os de maneira lógica e coerente.
+                  "
+                ></a-entity>
+              </a-entity>
+
+              <a-entity id="painelParabens" visible="false" position="2 0.04 -1.0">
+                <a-image
+                  src="../assets/paper.png"
+                  scale="5 4 1"
+                >
+                </a-image>
+                <a-entity
+                  id="paineltext"
+                  geometry="primitive: plane; height: 3.35; width: auto;"
+                  material="color: white;"
+                  position="0.351 0.189 0"
+                  text="width: 4; color: black; negate: false; font: ../fonts/Exo2-Regular-msdf.json;
+                  font-image: ../fonts/Exo2-Regular.png; value:Parabéns! Você completou o nível 1 com sucesso!
+    
+                  Nessa missão, você aprendeu sobre:
+                  ALGORITMO: uma sequência lógica de passos.
+                                    
+                  Ao organizar os blocos para chegar à sala de aula, você não só alcançou seu objetivo, mas também aplicou um pensamento computacional em uma tarefa do seu cotidiano! Incrível, não é mesmo? 
+                                    
+                  Continue nessa jornada e explore como o pensamento computacional pode ser utilizado em várias outras tarefas do seu dia a dia. Os próximos níveis reservam mais descobertas e desafios empolgantes!
+                   "
+                ></a-entity>
+              </a-entity>
+
+              <a-entity id="painelTenteNovamente" visible="false" position="2 0.04 -1.0">
+                <a-image
+                  src="../assets/paper.png"
+                  scale="5 2.5 1"
+                >
+                </a-image>
+                <a-entity
+                  id="paineltext"
+                  geometry="primitive: plane; height: 1.5; width: auto;"
+                  material="color: white;"
+                  position="0.351 0 0"
+                  text="width: 4; color: black; negate: false; font: ../fonts/Exo2-Regular-msdf.json;
+                    font-image: ../fonts/Exo2-Regular.png;
+                    value: 
+                    Você não conseguiu concluir este nível, mas não desanime.
+                    
+                    Tente novamente!
+                    "
+                ></a-entity>
+              </a-entity>
+            </a-entity>
+          </a-entity>
+        </a-entity>
+
+        <a-entity
+          id="leftController"
+          laser-controls="hand: left;"
+          grab
+          thumbstick-logging-left
+        >
+          <a-entity
+            cursor="fuse: true; fuseTimeout: 500"
+            position="0 0 -.1"
+            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+            material="color: gray; shader: flat"
+            raycaster="objects: .clicable; showLine: true; far: 100"
+            line="color: red; opacity: 0.5;"
+          >
+          </a-entity>
+        </a-entity>
+
+        <a-entity
+          id="rightController"
+          laser-controls="hand: right;"
+          grab
+          thumbstick-logging-right
+        >
+          <a-entity
+            cursor="fuse: true; fuseTimeout: 500"
+            position="0 0 -.1"
+            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+            material="color: gray; shader: flat"
+            raycaster="objects: .clicable; showLine: true; far: 100; lineColor: red; lineOpacity: 0.5"
+          >
+          </a-entity>
+        </a-entity>
+      </a-entity>
+      <!-- player -->
+
+      <a-entity
+        clicable
+        id="b1"
+        class="buttonBoard"
+        geometry="primitive: plane; height: 0.15; width: 1.0;"
+        material="color: white"
+        text="value: SENTAR NA CADEIRA; color: black; align: center; width: 2; font: ../fonts/Exo2-Regular-msdf.json;
+                    font-image: ../fonts/Exo2-Regular.png; negate: false"
+        rotation="0 -180 0"
+        position="9.23799 12.2 23"
+        scale="6 6 0.7"
+      ></a-entity>
+
+      <a-entity
+        clicable
+        id="b2"
+        class="buttonBoard"
+        geometry="primitive: plane; height: 0.15; width: 1.0;"
+        material="color: white"
+        text="value: ASSISTIR AULA; color: black; align: center; width: 2; font: ../fonts/Exo2-Regular-msdf.json;
+                    font-image: ../fonts/Exo2-Regular.png; negate: false"
+        rotation="0 -180 0"
+        position="9.23799 10.7 23"
+        scale="6 6 0.7"
+      ></a-entity>
+
+      <a-entity
+        clicable
+        id="b3"
+        class="buttonBoard"
+        geometry="primitive: plane; height: 0.15; width: 1.0;"
+        material="color: white"
+        text="value: FECHAR PORTA; color: black; align: center; width: 2; font: ../fonts/Exo2-Regular-msdf.json;
+                    font-image: ../fonts/Exo2-Regular.png; negate: false"
+        rotation="0 -180 0"
+        position="9.23799 9.2 23"
+        scale="6 6 0.7"
+      ></a-entity>
+
+      <a-entity
+        clicable
+        id="b4"
+        class="buttonBoard"
+        geometry="primitive: plane; height: 0.15; width: 1.0;"
+        material="color: white"
+        text="value: ESCOVAR OS DENTES; color: black; align: center; width: 2; font: ../fonts/Exo2-Regular-msdf.json;
+                    font-image: ../fonts/Exo2-Regular.png; negate: false"
+        rotation="0 -180 0"
+        position="9.23799 7.7 23"
+        scale="6 6 0.7"
+      ></a-entity>
+
+      <a-entity
+        clicable
+        id="b5"
+        class="buttonBoard"
+        geometry="primitive: plane; height: 0.15; width: 1.0;"
+        material="color: white"
+        text="value: ASSISTIR TV; color: black; align: center; width: 2; font: ../fonts/Exo2-Regular-msdf.json;
+                    font-image: ../fonts/Exo2-Regular.png; negate: false"
+        rotation="0 -180 0"
+        position="1.23799 12.2 23"
+        scale="6 6 0.7"
+      ></a-entity>
+
+      <a-entity
+        clicable
+        id="b6"
+        class="buttonBoard"
+        geometry="primitive: plane; height: 0.15; width: 1.0;"
+        material="color: white"
+        text="value: ABRIR PORTA; color: black; align: center; width: 2; font: ../fonts/Exo2-Regular-msdf.json;
+                    font-image: ../fonts/Exo2-Regular.png; negate: false"
+        rotation="0 -180 0"
+        position="1.23799 10.7 23"
+        scale="6 6 0.7"
+      ></a-entity>
+
+      <a-entity
+        clicable
+        id="b7"
+        class="buttonBoard"
+        geometry="primitive: plane; height: 0.15; width: 1.0;"
+        material="color: white"
+        text="value: ABRIR MOCHILA; color: black; align: center; width: 2; font: ../fonts/Exo2-Regular-msdf.json;
+                    font-image: ../fonts/Exo2-Regular.png; negate: false"
+        rotation="0 -180 0"
+        position="1.23799 9.2 23"
+        scale="6 6 0.7"
+      ></a-entity>
+
+      <a-entity
+        clicable
+        id="b8"
+        class="buttonBoard"
+        geometry="primitive: plane; height: 0.15; width: 1.0;"
+        material="color: white"
+        text="value: PEGAR CADERNO; color: black; align: center; width: 2; font: ../fonts/Exo2-Regular-msdf.json;
+                    font-image: ../fonts/Exo2-Regular.png; negate: false"
+        rotation="0 -180 0"
+        position="1.23799 7.7 23"
+        scale="6 6 0.7"
+      ></a-entity>
+
+      <a-entity light="type: ambient; color: #FFF"></a-entity>
+      <a-entity
+        light="type: directional; color: #FFF; intensity: 0.4"
+        position="7.9 2.8 0.0"
+      ></a-entity>
+      <a-entity
+        light="type: directional; color: #FFF; intensity: 0.4"
+        position="3.9 2.8 0.0"
+      ></a-entity>
+      <a-entity
+        light="type: directional; color: #FFF; intensity: 0.4"
+        position="-2.1 2.8 0.0"
+      ></a-entity>
+
+      <a-entity
+        light="type: directional; color: #FFF; intensity: 0.4"
+        position="6.7 2.8 -5.3"
+      ></a-entity>
+
+      <a-entity
+        light="type: directional; color: #FFF; intensity: 0.4"
+        position="9.0 2.8 5.8"
+      ></a-entity>
+      <a-entity
+        light="type: directional; color: #FFF; intensity: 0.4"
+        position="5.2 2.8 5.8"
+      ></a-entity>
+      <a-entity
+        light="type: directional; color: #FFF; intensity: 0.4"
+        position="1.9 2.8 5.8"
+      ></a-entity>
+    </a-scene>
+  </body>
+</html>
