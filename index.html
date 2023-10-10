@@ -35,7 +35,7 @@
       <a-assets>
         <a-asset-item
           id="school-gltf"
-          src="./assets/scene.gltf"
+          src="./assets/school-ab2.gltf"
           preload="auto"
         ></a-asset-item>
       </a-assets>
@@ -304,37 +304,50 @@
         scale="6 6 0.7"
       ></a-entity>
 
-      <a-entity light="type: ambient; color: #FFF"></a-entity>
-      <a-entity
-        light="type: directional; color: #FFF; intensity: 0.4"
-        position="7.9 2.8 0.0"
-      ></a-entity>
-      <a-entity
-        light="type: directional; color: #FFF; intensity: 0.4"
-        position="3.9 2.8 0.0"
-      ></a-entity>
-      <a-entity
-        light="type: directional; color: #FFF; intensity: 0.4"
-        position="-2.1 2.8 0.0"
-      ></a-entity>
+      <a-assets>
+        <img id="my-texture" src="texture.jpeg">
+        <img id="my-texture2" src="texture2.jpeg">
+        <img id="my-texture3" src="texture3.jpg">
+        <img id="my-texture5" src="texture5.jpeg">
+        <img id="my-texture6" src="texture6.jpeg">
+      </a-assets>
+      <a-entity id="spheres">
 
-      <a-entity
-        light="type: directional; color: #FFF; intensity: 0.4"
-        position="6.7 2.8 -5.3"
-      ></a-entity>
+        <a-entity id="directional1" light="type: directional; color: #EEE; intensity: 0.5" position="4 6.5 12.4"></a-entity>
+        <a-sphere color="black" radius="0.8" metalness="0.8" material="roughness: 0;" position="4 6.5 12.4" animation="property: position; to: 4 15 12.4; dur: 20000; easing: linear; loop: true" geometry=""></a-sphere>
 
-      <a-entity
-        light="type: directional; color: #FFF; intensity: 0.4"
-        position="9.0 2.8 5.8"
-      ></a-entity>
-      <a-entity
-        light="type: directional; color: #FFF; intensity: 0.4"
-        position="5.2 2.8 5.8"
-      ></a-entity>
-      <a-entity
-        light="type: directional; color: #FFF; intensity: 0.4"
-        position="1.9 2.8 5.8"
-      ></a-entity>
+        <a-light id="directional2" type="directional" light="castShadow:true;" position="2 6.5 12.4" intensity="0.5" shdadow-camera-automatic="#objects"></a-light>
+        <a-sphere color="yellow" radius="0.8" metalness="0.8" material="roughness: 0" position="2 6.5 12.4" animation="property: position; to: 2 15 12.4; dur: 20000; easing: linear; loop: true" geometry=""></a-sphere>
+        
+        <a-entity id="hemisphere" light="type: hemisphere; color: #33C; groundColor: #3C3; intensity: 2"></a-entity>
+        <a-sphere color="red" radius="0.8" metalness="0.8" material="roughness: 0.5" position="0 6.5 12.4" animation="property: position; to: 0 15 12.4; dur: 20000; easing: linear; loop: true" geometry=""></a-sphere>
+        
+        <a-entity id="point" light="type: point; intensity: 0.75; distance: 50; decay: 2" position="-2 6.5 12.4"></a-entity>
+        <a-sphere color="blue" radius="0.8" metalness="0.8" material="roughness: 1.0" position="-2 6.5 12.4" animation="property: position; to:-2 15 12.4; dur: 20000; easing: linear; loop: true" geometry=""></a-sphere>
+        
+        <a-entity id="spot" light="type: spot; angle: 45"></a-entity>
+        <a-sphere color="white" radius="0.8" metalness="0.8" material="roughness: 1.0" position="-4 6.5 12.4" animation="property: position; to:-4 15 12.4; dur: 20000; easing: linear; loop: true" geometry=""></a-sphere>
+
+        <a-box color="#8f5656" radius="0.8" position="4 6.5 9.8" material="src: #my-texture" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000" geometry=""> </a-box>
+        <a-box color="#52521e" radius="0.8" position="2 6.5 9.8" material="src: #my-texture2" shadow="receive: true" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000" geometry=""></a-box>
+        <a-box color="#3c2806" radius="0.8" position="0 6.5 9.8" material="src: #my-texture3" shadow="receive: true" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000" geometry=""></a-box>
+        <a-box color="#16386f" radius="0.8" position="-2 6.5 9.8" material="src: #my-texture6" shadow="receive: true" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000" geometry=""></a-box>
+        <a-box color="#393932" radius="0.8" position="-4 6.5 9.8" material="src: #my-texture5" shadow="receive: true" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000" geometry=""></a-box>
+      </a-entity>
+
+      <a-entity>
+        <a-entity id="ambient1" light="type: ambient; color: #FFF"></a-entity>
+        <a-entity id="directionalg1" light="type: directional; color: #FFF; intensity: 0.4" position="7.9 2.8 0.0" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-entity>
+        <a-entity id="directionalg2" light="type: directional; color: #FFF; intensity: 0.4" position="3.9 2.8 0.0"></a-entity>
+        <a-entity id="directionalg3" light="type: directional; color: #FFF; intensity: 0.4" position="-2.1 2.8 0.0"></a-entity>
+  
+        <a-entity id="directionalg4" light="type: directional; color: #FFF; intensity: 0.4" position="6.7 2.8 -5.3" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-entity>
+  
+        <a-entity id="directionalg5" light="type: directional; color: blue; intensity: 0.4" position="9.0 2.8 5.8" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-entity>
+        <a-entity id="directionalg6" light="type: directional; color: red; intensity: 0.4" position="-7.38 16.22 16.71" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-entity>
+        <a-entity id="directionalg7" light="type: directional; color: yellow; intensity: 0.4" position="1.9 2.8 5.8"></a-entity>
+
+      </a-entity>
     </a-scene>
   </body>
 </html>
